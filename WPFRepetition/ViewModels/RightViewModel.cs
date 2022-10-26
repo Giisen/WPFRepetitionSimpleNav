@@ -35,6 +35,13 @@ namespace WPFRepetition.ViewModels
         {
             _dataModel = dataModel;
             CountDownCommand = new RelayCommand(() => Counter--);
+            //Skulle kunna köra
+            // CountDownCommand = new RelayCommand(Countup());
+        }
+
+        public void Countup()
+        {
+            Counter++;
         }
     }
 }
