@@ -1,5 +1,5 @@
-﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
-using Microsoft.Toolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using WPFRepetition.Models;
 
 namespace WPFRepetition.ViewModels
@@ -35,8 +35,7 @@ namespace WPFRepetition.ViewModels
         {
             _dataModel = dataModel;
             CountDownCommand = new RelayCommand(() => Counter--);
-            //Skulle kunna köra
-            // CountDownCommand = new RelayCommand(Countup());
+            
         }
 
         public void Countup()
