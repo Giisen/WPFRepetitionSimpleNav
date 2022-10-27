@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using WPFRepetition.Managers;
 using WPFRepetition.Models;
 
 namespace WPFRepetition.ViewModels
@@ -14,16 +15,13 @@ namespace WPFRepetition.ViewModels
         #region Fields
 
         private DataModel _dataModel;
+        private NavigationManager _navigationManager;
 
         #endregion
 
         #region Properties
 
-        private int _counter;
-
-       
-
-        public int Counter
+     public int Counter
         {
             
             get { return _dataModel.Counter; }
@@ -41,12 +39,21 @@ namespace WPFRepetition.ViewModels
 
         public IRelayCommand ResetCounterCommand { get; }
 
+        public IRelayCommand NavigateLeftCommand { get; }
+        public IRelayCommand NavigateRightCommand { get; }
+
+
         #endregion
 
-        public CenterViewModel(DataModel dataModel)
+        public CenterViewModel(DataModel dataModel, NavigationManager navigationManager)
         {
             _dataModel = dataModel;
+            _navigationManager= navigationManager;
             ResetCounterCommand = new RelayCommand(() => Counter = 0);
+            NavigateLeftCommand = new RelayCommand(() => _navigationManager.CurrentViewModel = new LeftViewModel(_dataModel, _navigationManager));
+            NavigateRightCommand = new RelayCommand(() => _navigationManager.CurrentViewModel = new RightViewModel(_dataModel, _navigationManager));
+                
+
         }
         
     }

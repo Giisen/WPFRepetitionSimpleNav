@@ -25,11 +25,7 @@ namespace WPFRepetition.ViewModels
             _navigationManager = navigationManager;
             _dataManager = dataManager;
 
-            NavigateLeftCommand = new RelayCommand(() => _navigationManager.CurrentViewModel = new LeftViewModel(_dataManager.DataModel));
-            NavigateRightCommand = new RelayCommand(() => _navigationManager.CurrentViewModel = new RightViewModel(_dataManager.DataModel));
-            NavigateCenterCommand = new RelayCommand(() => _navigationManager.CurrentViewModel = new CenterViewModel(_dataManager.DataModel));
-
-            _navigationManager.CurrentViewModelChanged += CurrentViewModelChanged;
+           _navigationManager.CurrentViewModelChanged += CurrentViewModelChanged;
         }
 
 

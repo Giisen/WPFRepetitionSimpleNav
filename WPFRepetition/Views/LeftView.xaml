@@ -11,10 +11,20 @@
     <DockPanel>
         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
             <Button Command="{Binding CountUpCommand}" Content="Count Up" />
-            <TextBlock Width="50" Text="{Binding Counter, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBlock
+                FontSize="36"
+                Width="50" Text="{Binding Counter, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
-        <StackPanel DockPanel.Dock="Left" />
-        <StackPanel DockPanel.Dock="Right" />
+        <StackPanel DockPanel.Dock="Left" >
+            <Button
+                FontSize="36"
+                Command="{Binding NavigateLeftCommand}" Content="Show Left" />
+        </StackPanel>
+        <StackPanel DockPanel.Dock="Right" >
+            <Button
+                FontSize="36"
+                Command="{Binding NavigateRightCommand}" Content="Show Right" />
+        </StackPanel>
         <StackPanel DockPanel.Dock="Bottom" />
     </DockPanel>
 </UserControl>

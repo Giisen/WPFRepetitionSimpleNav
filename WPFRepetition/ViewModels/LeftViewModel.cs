@@ -12,12 +12,16 @@ namespace WPFRepetition.ViewModels
         #region Fields
 
         private readonly DataModel _dataModel;
+        private NavigationManager _navigationManager;
 
         #endregion
 
         #region Commands
 
         public IRelayCommand CountUpCommand { get; }
+
+        public IRelayCommand NavigateLeftCommand { get; }
+        public IRelayCommand NavigateRightCommand { get; }
 
         #endregion
 
@@ -35,10 +39,13 @@ namespace WPFRepetition.ViewModels
 
         #endregion
 
-        public LeftViewModel(DataModel dataModel)
+        public LeftViewModel(DataModel dataModel, NavigationManager navigationManager)
         {
             _dataModel = dataModel;
+            _navigationManager=navigationManager;
             CountUpCommand = new RelayCommand(() => Counter++);
+            NavigateLeftCommand = new RelayCommand(() => _navigationManager.CurrentViewModel = new RightViewModel(_dataModel,_navigationManager));
+            NavigateRightCommand = new RelayCommand(() => _navigationManager.CurrentViewModel = new CenterViewModel(_dataModel, _navigationManager));
         }
     }
 }
